@@ -41,3 +41,8 @@ pages = [
 for page in pages
 	page_title = page['title']
 	print(page_title)
+
+template = open ("base.html").read()
+index_content = open("content/index.html").read()
+finished_index_page = template.replace("{{content}}", index_content)
+open("docs/index.html", "w+").write(finished_index_page)
