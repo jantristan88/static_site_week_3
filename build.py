@@ -1,4 +1,4 @@
-def main(filename,output,title):
+def main():
 
 	pages = [
 		{
@@ -17,13 +17,15 @@ def main(filename,output,title):
 			"title":"Publication"
 		},
 
-		]
+		] 
 	
 	for page in pages:
-		template = open("base.html").read()
+		template = open("templates/base.html").read()
 		index_content = open(page['filename']).read()
 		finished_index_page = template.replace("{{content}}", index_content)
 		open(page['output'], "w+").write(finished_index_page)
 
+if __name__ == '__main__':
+	main()
 
 
