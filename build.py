@@ -18,7 +18,8 @@ def main():
 		},
 
 		] 
-	
+
+	def combine()
 	for page in pages:
 		template = open("templates/base.html").read()
 		index_content = open(page['filename']).read()
