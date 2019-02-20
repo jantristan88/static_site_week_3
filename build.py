@@ -22,12 +22,14 @@ def main():
 		] 
 
 	#Used a for loop for the following commands be applied to each dictionary set
-	for page in pages:
-		template = open("templates/base.html").read() #Opens and assigns base.html in the templates folder to variable template
-		index_content = open(page['filename']).read() #Opens and assigns the values of the key filename to index_content
-		finished_index_page = template.replace("{{content}}", index_content) #opens the the variable template, replaces the placeholder content with the variable index_content
-		open(page['output'], "w+").write(finished_index_page) #the values assigned to variable finished_index_page is written to the values in the output key
-															  #modifying or creating the html giles in the docs folder
+	#created a function for merging contents with the base file
+	def content_base_merge():
+		for page in pages:
+			template = open("templates/base.html").read() #Opens base.html in the templates folder and assigned to variable template
+			index_content = open(page['filename']).read() #Assign the values of the key filename to index_content
+			finished_index_page = template.replace("{{content}}", index_content) #opens the variable template, replaces the placeholder content with the variable index_content
+			open(page['output'], "w+").write(finished_index_page) #the values assigned to variable finished_index_page is written to the values in the output key
+	content_base_merge()									  #modifying or creating the html giles in the docs folder
 
 	#created another function to address the title placeholders													
 	def title():
