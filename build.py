@@ -28,7 +28,7 @@ def main():
 			template = open("templates/base.html").read() #Opens base.html in the templates folder and assigned to variable template
 			index_content = open(page['filename']).read() #Assign the values of the key filename to index_content
 			finished_index_page = template.replace("{{content}}", index_content) #opens the variable template, replaces the placeholder content with the variable index_content
-			return(finished_index_page) #goes through the list of dictionary to combine the files
+			return(finished_index_page) #goes through the list of dictionary to combine the files 
 
 	#directs the combined files to docs folder
 	def output_to_folder():
