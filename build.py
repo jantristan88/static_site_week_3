@@ -27,24 +27,24 @@ pages = [
 	#	for page in pages:
 	#		template = open("templates/base.html").read() #Opens base.html in the templates folder and assigned to variable template
 	#		index_content = open(page['filename']).read() #Assign the values of the key filename to index_content
-	#		finished_index_page = template.replace("{{content}}", index_content) #opens the variable template, replaces the placeholder content with the variable index_content
-	#		return(finished_index_page) #goes through the list of dictionary to combine the files 
-	#content_base_merge()
+	# 		finished_index_page = template.replace("{{content}}", index_content) #opens the variable template, replaces the placeholder content with the variable index_content
+	# 		return(finished_index_page) #goes through the list of dictionary to combine the files 
+	# content_base_merge()
 
-	#directs the combined files to docs folder
-	#def output_to_folder():
-	#	for page in pages:
-	#		final_step = content_base_merge
-	#		open(page['output'], "w+").write(final_step) #uses the function content_base_merge to put combined files to output folder
-	#output_to_folder()
+	# #directs the combined files to docs folder
+	# #def output_to_folder():
+	# 	for page in pages:
+	# 		final_step = content_base_merge
+	# 		open(page['output'], "w+").write(final_step) #uses the function content_base_merge to put combined files to output folder
+	# output_to_folder()
 
-	#def title():
-	#	for page in pages:
-	#		title_content = open(page['filename']).read()
-	#		title_name = page['title']
-	#		finished_title_content = title_content.replace("{{title}}", title_name)
-	#		open(page['output'], "w+").write(finished_title_content)
-	#title()
+	# def title():
+	# 	for page in pages:
+	# 		title_content = open(page['filename']).read()
+	# 		title_name = page['title']
+	# 		finished_title_content = title_content.replace("{{title}}", title_name)
+	# 		open(page['output'], "w+").write(finished_title_content)
+	# title()
 #for page in pages:
 
 #	def apply_template():
@@ -84,27 +84,26 @@ pages = [
 #    for page in pages:
 #        print_page(template, page)
 
+#
+def main():
+	template = open("templates/base.html").read() #opens base.html
+	for page in pages:
+		docs_output(template,page) 
 
-def apply_template(template,filename,title):
-	index_content = open(filename).read()
-	finished_index_page = template.replace("{{content}}", index_content)
-	finished_index_page = finished_index_page.replace("{{title}}", title)
-	return (finished_index_page)
-
-def docs_output(template,page):
-	filename = page['filename'] 
+def docs_output(template,page): #all the parameters are local, we need template and page as parameters to define them before using in fx locally
+	filename = page['filename'] #lines 95 - 97 dictionary keys assigned to a variable 
 	output = page['output']
 	title = page['title']
-	final_step = apply_template(template,filename,title)
-	open(output, "w+").write(final_step)
+	final_step = apply_template(template,filename,title) #helper function
+	open(output, "w+").write(final_step) #overwrites the html file in the output with the file that has the placeholders replaced
 
-def main():
-	template = open("templates/base.html").read()
-	for page in pages:
-		docs_output(template,page)
+def apply_template(template,filename,title): 
+	index_content = open(filename).read() #opens filename and assign it to variable index_content
+	finished_index_page = template.replace("{{content}}", index_content) #placeholder content is replaced with index_content
+	finished_index_page = finished_index_page.replace("{{title}}", title) #placeholder title is replaced by title kep
+	return (finished_index_page)  
 
 
-	
 
 if __name__ == '__main__':
 	main() #invokes the main function
