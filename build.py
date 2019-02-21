@@ -23,15 +23,19 @@ def main():
 
 	#Used a for loop for the following commands be applied to each dictionary set
 	#created a function for merging contents with the base file
-	def content_base_merge():
+	def content_base_merge(combined):
 		for page in pages:
 			template = open("templates/base.html").read() #Opens base.html in the templates folder and assigned to variable template
 			index_content = open(page['filename']).read() #Assign the values of the key filename to index_content
 			finished_index_page = template.replace("{{content}}", index_content) #opens the variable template, replaces the placeholder content with the variable index_content
-			open(page['output'], "w+").write(finished_index_page) #the values assigned to variable finished_index_page is written to the values in the output key
-	content_base_merge()									  #modifying or creating the html giles in the docs folder
+			return(finished_index_page) #goes through the list of dictionary to combine the files
 
-	#created another function to address the title placeholders													
+	#directs the combined files to docs folder
+	def output_to_folder():
+		for page in pages:
+			content = open(page['output']).read() #Opens the docs pages 
+			final_copy = content_base_merge(content) #uses the function content_base_merge to put combined files to output folder
+														
 	def title():
 		for page in pages:
 			title_content = open(page['filename']).read()
