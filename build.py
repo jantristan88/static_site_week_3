@@ -1,4 +1,12 @@
-
+#1.) Simplify repetitive parts by creating variables, do this for page kayes
+#2.) Determine what needs to be done, in this case:
+# - Access the base file
+# - Replace the placeholders with content files
+# - Direct the new file to the output folder
+#3.) Per the requirements of the homework use this three steps to create three functions
+#4.) Group the line items by readibility and efficiency (title and content placeholder in one fx + return stmnt)
+#5.) Make sure to have the right parameters for each function to avoid undefined terms errors within your
+#        local function
 
 	#Created a list of dictionaries of the files involved, the directory to which the output should go
 	#and the title which will eventually be used for the placeholder
